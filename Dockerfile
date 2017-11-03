@@ -1,5 +1,6 @@
 FROM frolvlad/alpine-glibc:alpine-3.6
 ENV CLOUD_SDK_VERSION=178.0.0
+COPY phar-install /usr/bin/phar-install
 RUN apk --no-cache add ca-certificates \
     curl \
     git \
@@ -28,9 +29,7 @@ RUN apk --no-cache add ca-certificates \
     # && if [[ $ACTUAL_SIGNATURE != $EXPECTED_SIGNATURE ]]; then exit 1; fi \
     && php composer-setup.php \
     && rm composer-setup.php \
-    && mv composer.phar /usr/bin/composer \
-    && composer global require dxw/phar-install=dev-master \
-    && mv ~/.composer/vendor/bin/phar-install /usr/bin/phar-install
+    && mv composer.phar /usr/bin/composer
 
 
     

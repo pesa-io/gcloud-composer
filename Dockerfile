@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-glibc:alpine-3.6
 ENV CLOUD_SDK_VERSION=178.0.0
-COPY phar-install /usr/bin/phar-install
+COPY ./phar-install /usr/bin/phar-install
 RUN apk --no-cache add ca-certificates \
     curl \
     git \

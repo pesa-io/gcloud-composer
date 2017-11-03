@@ -1,4 +1,4 @@
-FROM python:2-alpine
+FROM alpine:3.6
 ENV CLOUD_SDK_VERSION=178.0.0
 RUN apk --no-cache add ca-certificates \
     curl \
@@ -10,6 +10,7 @@ RUN apk --no-cache add ca-certificates \
     php7-json \
     php7-openssl \
     php7-phar \
+    python2 \
     wget \
     && mkdir -p /etc/ssl/certs \
     && update-ca-certificates --fresh \

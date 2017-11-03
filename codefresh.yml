@@ -1,0 +1,19 @@
+version: '1.0'
+steps:
+  BuildingDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: pesaio/gcloud-composer
+    working_directory: ./
+    dockerfile: Dockerfile
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+
+  PushingToDockerRegistry:
+    title: Pushing to Docker Registry
+    image_name: pesaio/gcloud-composer
+    type: push
+    candidate: '${{BuildingDockerImage}}'
+    tags:
+      - 'latest'
+      - 'dev-${{CF_SHORT_REVISION}}'
+    registry: hub

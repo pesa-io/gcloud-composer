@@ -4,12 +4,12 @@ RUN apk --no-cache add ca-certificates \
     curl \
     git \
     openssl \
-    php \
-    php-curl \
-    php-dom  \
-    php-json \
-    php-openssl \
-    php-phar \
+    php7 \
+    php7-curl \
+    php7-dom  \
+    php7-json \
+    php7-openssl \
+    php7-phar \
     wget \
     && mkdir -p /etc/ssl/certs \
     && update-ca-certificates --fresh \

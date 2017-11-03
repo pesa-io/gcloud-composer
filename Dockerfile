@@ -10,6 +10,7 @@ RUN apk --no-cache add ca-certificates \
     php7-json \
     php7-openssl \
     php7-phar \
+    php7-mbstring \
     python2 \
     wget \
     && mkdir -p /etc/ssl/certs \

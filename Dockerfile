@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM frolvlad/alpine-glibc:alpine-3.6
 ENV CLOUD_SDK_VERSION=178.0.0
 RUN apk --no-cache add ca-certificates \
     curl \
@@ -27,7 +27,10 @@ RUN apk --no-cache add ca-certificates \
     && export ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');") \
     # && if [[ $ACTUAL_SIGNATURE != $EXPECTED_SIGNATURE ]]; then exit 1; fi \
     && php composer-setup.php \
-    && rm composer-setup.php
+    && rm composer-setup.php \
+    && mv composer.phar /usr/bin/composer \
+    && composer global require dxw/phar-install=dev-master \
+    && mv ~/.composer/vendor/bin/phar-install /usr/bin/phar-install
 
 
     
